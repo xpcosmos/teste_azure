@@ -27,7 +27,7 @@ def introducao():
         instrucoes()
 
 def instrucoes():
-    print("""
+    print('''
         Vamos lá! Agora você verá alguns conceitos básicos sobre as questões:
 
         - Temos 3 tipo de questões:
@@ -46,13 +46,15 @@ def instrucoes():
                 "A frase a ser avaliada é a _seguinte frase_."
         
         Pressione "Enter" para proseguir
-            """)
+            ''')
     input()
-    print("""
-    Ao final do teste você recebará uma nota e o seu resultado irá falar se você passou ou não.
-    Você também encontrará tópicos que errou para estudar mais e melhorar no assunto.
-    Ao final de cada questão você poderá 
-    """)
+    print('''
+    > Ao final do teste você recebará uma nota e o seu resultado irá falar se você passou ou não.
+    > Você também encontrará tópicos que errou para estudar mais e melhorar no assunto.
+    > Ao final de cada questão você poderá ler um pouco da explicação da questão
+
+    Pressione "Enter" para proseguir
+    ''')
 
 if __name__ == "__main__":
-    introducao()
+    introducao() # Seguirá para instruções caso o usuário queira
