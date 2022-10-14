@@ -56,5 +56,8 @@ def instrucoes():
     Pressione "Enter" para proseguir
     ''')
 
+def carregar_questoes():
+    pass
+
 if __name__ == "__main__":
     introducao() # Seguirá para instruções caso o usuário queira
