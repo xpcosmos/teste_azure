@@ -6,7 +6,7 @@ import os
 
 
 
-questoes_path = os.path.abspath("../src/questoes.csv")
+questoes_path = os.path.abspath("src/questoes.csv")
 
 def introducao():
     print('''
@@ -64,12 +64,59 @@ def selecionar_questoes_user(questoes):
 
     for i, j in zip(questoes.tema.unique(), [15, 20,15,10]):
         questoes_user_list.append(questoes.loc[questoes.tema == i].sample(j))
+    return pd.concat(questoes_user_list)
 
-    questoes_user_df = pd.concat(questoes_user_list)
+def exibir_questoes(questoes):
+    for i in questoes.index:
+        if len(questoes.iloc[i, 7]) >= 2:
+            print('[Questão de múltipla escolha]\n\n')
+        else:
+            print('[Questão de única escolha]\n\n')
+        # Print de enunciado:
 
-    return questoes_user_df
+        print(questoes.iloc[i, 1])
+
+        opcoes = []
+        for opcao in questoes.iloc[i, 2:6]:
+            try:
+                if opcao[0] != "NaN":
+                    opcoes.append(opcao)
+            except:
+                pass
+        tamanho_opcoes = len(opcoes)
+        alternativas = ['A', 'B', 'C', 'D', 'E']
+        
+        for opcao, alternativa in zip(opcoes, alternativas[0, tamanho_opcoes]):
+            print(f'{alternativa} - {opcao}')
+        
+        print('\n\n\nEscolha a(s) alternativa(s) correta(s):')
+        opcao_usuario =  input()
+        if opcao_usuario == questoes.iloc[i, 7]:
+            print('''
+                    Parabéns, você acertou! Deseja verificar a explicação para a questão?
+
+                    (1) Sim
+                    (2) Não, próxima questão
+                    ''')
+        if opcao_usuario != questoes.iloc[i, 7]:
+            print('''
+                    Que pena, você errou! Deseja verificar a explicação para a questão?
+
+                    (1) Sim
+                    (2) Não, próxima questão
+                    ''')
+        
+        passar_questao = input()
+        if passar_questao == 1:
+            print(questoes.iloc[i, 8])
+            print('Pressione "Enter" para acessar a próxima questão:')
+        
+        input()
+        
+        
+
 
 
 if __name__ == "__main__":
     introducao() # Seguirá para instruções caso o usuário queira
-    questoes = carregar_questoes()
+    selecionar_questoes_user(carregar_questoes())
