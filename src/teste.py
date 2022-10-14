@@ -57,7 +57,19 @@ def instrucoes():
     ''')
 
 def carregar_questoes():
-    pass
+    return pd.read_csv(questoes_path)
+
+def selecionar_questoes_user(questoes):
+    questoes_user_list = []
+
+    for i, j in zip(questoes.tema.unique(), [15, 20,15,10]):
+        questoes_user_list.append(questoes.loc[questoes.tema == i].sample(j))
+
+    questoes_user_df = pd.concat(questoes_user_list)
+
+    return questoes_user_df
+
 
 if __name__ == "__main__":
     introducao() # Seguirá para instruções caso o usuário queira
+    questoes = carregar_questoes()
