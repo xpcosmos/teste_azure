@@ -73,14 +73,15 @@ def selecionar_questoes_user(questoes):
 
 def exibir_questoes(questoes):
     for i in questoes.index:
-        multipla_escolha = str(questoes.iloc[i, 7])
+        multipla_escolha = str(questoes.iloc[i, 8])
 
         
         clear()
-        if len(multipla_escolha) >= 2:
-            print('[Questão de múltipla escolha]\n\n')
-        else:
+        if len(multipla_escolha) == 1:
             print('[Questão de única escolha]\n\n')
+        else:
+            print('[Questão de múltipla escolha]\n\n')
+        
         # Print de enunciado:
 
         print(questoes.iloc[i, 2])
