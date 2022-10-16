@@ -106,6 +106,7 @@ def exibir_questoes(questoes):
         print('\n\n\nEscolha a(s) alternativa(s) correta(s):')
         opcao_usuario =  input()
         clear()
+        
         if opcao_usuario.capitalize() == questoes.iloc[i, 7].strip():
             print('''
 Parabéns, você acertou! Deseja verificar a explicação para a questão?
@@ -145,11 +146,14 @@ def exibir_resultado(questoes, resultados):
     for i in resultado['tema'].unique():
         questoes_acertadas = resultado.loc[resultado['tema'] == i]['acertou'].sum()
         n_questoes_totais = resultado.loc[resultado['tema'] == i]['tema'].value_counts()[0]
-        per_questoes_acertadas = round((questoes_acertadas/n_questoes_totais),2) * 100
-        print('Resultados:\n\n')
+        per_questoes_acertadas = round((questoes_acertadas/n_questoes_totais),3) * 100
+        print('Resultados:\n')
         print(f'{i}\n{per_questoes_acertadas}%')
+    questoes_totais_corretas = resultado['acertou'].sum()
+    questoes_totais_corretas = round((questoes_totais_corretas / 60),3) * 100 
+    print(f'\n')
     print('\n\nSugestão: É preferível que você estude os conteúdos que teve mais difuldade antes de realizar uma nova tentativa')
-    input('\n\nPressione "Enter" para sair:\n')
+    input('\nPressione "Enter" para sair:\n')
     exit()
 
 
