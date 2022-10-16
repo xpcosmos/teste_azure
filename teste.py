@@ -140,6 +140,7 @@ def exibir_resultado(questoes, resultados):
     resultado = pd.DataFrame({'acertos_binarios':resultados})
     resultado = pd.concat(questoes, resultados)
     print(resultado)
+    resultado.loc['Conce']
         
 
 
