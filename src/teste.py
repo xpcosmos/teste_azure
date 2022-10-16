@@ -130,7 +130,8 @@ Que pena, você errou! Deseja verificar a explicação para a questão?
             input('\n\nPressione "Enter" para acessar a próxima questão:\n')
             clear()
         
-        
+def exibir_resultado():
+    pass  
         
         
 
