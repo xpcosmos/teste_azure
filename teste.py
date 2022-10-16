@@ -6,7 +6,7 @@ import os
 
 
 
-questoes_path = os.path.abspath("src/questoes.csv")
+
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -61,7 +61,7 @@ Pressione "Enter" para proseguir
     input()
     clear()
 
-def carregar_questoes():
+def carregar_questoes(questoes_path):
     return pd.read_csv(questoes_path)
 
 def selecionar_questoes_user(questoes):
@@ -156,7 +156,8 @@ def exibir_resultado(questoes, resultados):
 
 if __name__ == "__main__":
     resultados = []
+    questoes_path = os.path.abspath("src/questoes.csv")
     introducao() # Seguirá para instruções caso o usuário queira
-    questoes = selecionar_questoes_user(carregar_questoes())
+    questoes = selecionar_questoes_user(carregar_questoes(questoes_path))
     resultados = exibir_questoes(questoes)
     exibir_resultado(questoes, resultados)
