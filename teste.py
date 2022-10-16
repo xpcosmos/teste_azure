@@ -106,7 +106,7 @@ def exibir_questoes(questoes):
         print('\n\n\nEscolha a(s) alternativa(s) correta(s):')
         opcao_usuario =  input()
         clear()
-        if opcao_usuario.capitalize() == questoes.iloc[i, 7]:
+        if opcao_usuario.capitalize() == questoes.iloc[i, 7].strip():
             print('''
 Parabéns, você acertou! Deseja verificar a explicação para a questão?
 
@@ -115,7 +115,7 @@ Parabéns, você acertou! Deseja verificar a explicação para a questão?
                 ''')
             
             resultados.append(1)
-        if opcao_usuario.capitalize() != questoes.iloc[i, 7]:
+        if opcao_usuario.capitalize() != questoes.iloc[i, 7].strip():
             print('''
 Que pena, você errou! Deseja verificar a explicação para a questão?
 
@@ -148,9 +148,9 @@ def exibir_resultado(questoes, resultados):
         per_questoes_acertadas = round((questoes_acertadas/n_questoes_totais),2) * 100
         print('Resultados:\n\n')
         print(f'{i}\n{per_questoes_acertadas}%')
-        print('\n\nSugestão: É preferível que você estude os conteúdos que teve mais difuldade antes de realizar uma nova tentativa')
-        input('\n\nPressione "Enter" para sair:\n')
-        exit()
+    print('\n\nSugestão: É preferível que você estude os conteúdos que teve mais difuldade antes de realizar uma nova tentativa')
+    input('\n\nPressione "Enter" para sair:\n')
+    exit()
 
 
 
