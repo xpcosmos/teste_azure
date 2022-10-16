@@ -19,4 +19,20 @@ O teste será iniciado.
 
 ## Pontos importantes...
 
-O teste conta com perguntas de múltipla e única escolha. Caso a pergunta seja de múltipla escolha, você deverá digitar as dias opções
+O teste conta com perguntas de múltipla e única escolha. Caso a pergunta seja de múltipla escolha, você deverá digitar as duas opções sem espaço. Por convenção, caso uma das alternativas estejam incorretas, o computador irá considerar toda a questão com inválida. 
+
+Algumas questões apresentam alguns erros de formatação que serão corrigidos em breve em novas atualizações do projeto.
+
+Ao fim do teste, você receberá um parâmetro geral do número de questões corretas e o tema a qual elas se referem. O teste será finalizado **não** dando a opção de realização de um novo teste, sendo necessário abrir novamento o aplicativo caso assim seja desejado pelo usuário.
+
+## Próximos objetivos:
+
+* Criar uma especificação mais detalhada dos temas das questões;
+* Anular todo e qualquer erro de formatação de enunciado de questões;
+* Criar meio-ponto para questões de múltipla escolhas
+
+## Ideias ainda mais distantes:
+
+* Mostrar um relatório de progresso de conhecimento
+* Expandiar catálogo de questões
+* Criar alternativas mais sofisticadas para enunciados
