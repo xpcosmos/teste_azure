@@ -136,11 +136,16 @@ Que pena, você errou! Deseja verificar a explicação para a questão?
     return resultados
 
 def exibir_resultado(questoes, resultados):
-    temas = questoes.iloc[:,10]
+    temas = questoes.iloc[:,9].reset_index(drop=True)
     resultado = pd.DataFrame({'acertos_binarios':resultados})
-    resultado = pd.concat(questoes, resultados)
-    print(resultado)
-    resultado.loc['Conce']
+    resultado = pd.concat([temas, resultado], ignore_index=True, axis=1)
+    resultado.columns = ['tema','acertou']
+
+    for i in resultado['tema'].unique():
+        questoes_acertadas = resultado.loc[resultado['tema'] == i]['acertou'].sum()
+        n_questoes_totais = resultado.loc[resultado['tema'] == i]['tema'].value_counts()[0]
+        per_questoes_acertadas = round((questoes_acertadas/n_questoes_totais),2) * 100
+        print(f'{i}\n{per_questoes_acertadas}%')
         
 
 
