@@ -112,6 +112,8 @@ Parabéns, você acertou! Deseja verificar a explicação para a questão?
 (1) Sim
 (2) Não, próxima questão
                 ''')
+            
+            resultados.append(1)
         if opcao_usuario != questoes.iloc[i, 8]:
             print('''
 Que pena, você errou! Deseja verificar a explicação para a questão?
@@ -119,6 +121,8 @@ Que pena, você errou! Deseja verificar a explicação para a questão?
 (1) Sim
 (2) Não, próxima questão
                 ''')
+            
+            resultados.append(0)
         
         passar_questao = input()
         clear()
@@ -129,15 +133,16 @@ Que pena, você errou! Deseja verificar a explicação para a questão?
             print(explicacao)
             input('\n\nPressione "Enter" para acessar a próxima questão:\n')
             clear()
-        
-def exibir_resultado():
-    pass  
-        
+
+def exibir_resultado(questoes):
+    temas = questoes.iloc[:,10]
+    
         
 
 
 
 if __name__ == "__main__":
+    resultados = []
     introducao() # Seguirá para instruções caso o usuário queira
     questoes = selecionar_questoes_user(carregar_questoes())
     exibir_questoes(questoes)
