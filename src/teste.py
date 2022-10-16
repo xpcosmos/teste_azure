@@ -133,10 +133,13 @@ Que pena, você errou! Deseja verificar a explicação para a questão?
             print(explicacao)
             input('\n\nPressione "Enter" para acessar a próxima questão:\n')
             clear()
+    return resultados
 
-def exibir_resultado(questoes):
+def exibir_resultado(questoes, resultados):
     temas = questoes.iloc[:,10]
-    
+    resultado = pd.DataFrame({'acertos_binarios':resultados})
+    resultado = pd.concat(questoes, resultados)
+    print(resultado)
         
 
 
@@ -145,4 +148,5 @@ if __name__ == "__main__":
     resultados = []
     introducao() # Seguirá para instruções caso o usuário queira
     questoes = selecionar_questoes_user(carregar_questoes())
-    exibir_questoes(questoes)
+    resultados = exibir_questoes(questoes)
+    exibir_resultado(questoes, resultados)
