@@ -106,7 +106,7 @@ def exibir_questoes(questoes):
         print('\n\n\nEscolha a(s) alternativa(s) correta(s):')
         opcao_usuario =  input()
         clear()
-        if opcao_usuario.title() == questoes.iloc[i, 7]:
+        if opcao_usuario.capitalize() == questoes.iloc[i, 7]:
             print('''
 Parabéns, você acertou! Deseja verificar a explicação para a questão?
 
@@ -115,7 +115,7 @@ Parabéns, você acertou! Deseja verificar a explicação para a questão?
                 ''')
             
             resultados.append(1)
-        if opcao_usuario.title() != questoes.iloc[i, 7]:
+        if opcao_usuario.capitalize() != questoes.iloc[i, 7]:
             print('''
 Que pena, você errou! Deseja verificar a explicação para a questão?
 
