@@ -72,6 +72,7 @@ def selecionar_questoes_user(questoes):
     return pd.concat(questoes_user_list)
 
 def exibir_questoes(questoes):
+    questoes.reset_index(drop=True, inplace=True)
     for i in questoes.index:
         multipla_escolha = str(questoes.iloc[i, 8])
 
@@ -136,7 +137,7 @@ Que pena, você errou! Deseja verificar a explicação para a questão?
     return resultados
 
 def exibir_resultado(questoes, resultados):
-    temas = questoes.iloc[:,9].reset_index(drop=True)
+    temas = questoes.iloc[:,10].reset_index(drop=True)
     resultado = pd.DataFrame({'acertos_binarios':resultados})
     resultado = pd.concat([temas, resultado], ignore_index=True, axis=1)
     resultado.columns = ['tema','acertou']
@@ -145,8 +146,11 @@ def exibir_resultado(questoes, resultados):
         questoes_acertadas = resultado.loc[resultado['tema'] == i]['acertou'].sum()
         n_questoes_totais = resultado.loc[resultado['tema'] == i]['tema'].value_counts()[0]
         per_questoes_acertadas = round((questoes_acertadas/n_questoes_totais),2) * 100
+        print('Resultados:\n\n')
         print(f'{i}\n{per_questoes_acertadas}%')
-        
+        print('\n\nSugestão: É preferível que você estude os conteúdos que teve mais difuldade antes de realizar uma nova tentativa')
+        input('\n\nPressione "Enter" para sair:\n')
+        exit()
 
 
 
