@@ -74,7 +74,7 @@ def selecionar_questoes_user(questoes):
 def exibir_questoes(questoes):
     questoes.reset_index(drop=True, inplace=True)
     for i in questoes.index:
-        multipla_escolha = str(questoes.iloc[i, 8])
+        multipla_escolha = str(questoes.iloc[i, 7])
 
         
         clear()
@@ -85,10 +85,10 @@ def exibir_questoes(questoes):
         
         # Print de enunciado:
 
-        print(questoes.iloc[i, 2])
+        print(questoes.iloc[i, 1])
         print('\n\n\n')
         opcoes = []
-        for opcao in questoes.iloc[i, 3:6]:
+        for opcao in questoes.iloc[i, 2:5]:
             try:
                 if opcao[0] != "NaN":
                     opcoes.append(opcao)
@@ -106,7 +106,7 @@ def exibir_questoes(questoes):
         print('\n\n\nEscolha a(s) alternativa(s) correta(s):')
         opcao_usuario =  input()
         clear()
-        if opcao_usuario == questoes.iloc[i, 8]:
+        if opcao_usuario.title() == questoes.iloc[i, 7]:
             print('''
 Parabéns, você acertou! Deseja verificar a explicação para a questão?
 
@@ -115,7 +115,7 @@ Parabéns, você acertou! Deseja verificar a explicação para a questão?
                 ''')
             
             resultados.append(1)
-        if opcao_usuario != questoes.iloc[i, 8]:
+        if opcao_usuario.title() != questoes.iloc[i, 7]:
             print('''
 Que pena, você errou! Deseja verificar a explicação para a questão?
 
@@ -129,7 +129,7 @@ Que pena, você errou! Deseja verificar a explicação para a questão?
         clear()
         if passar_questao == "1":
     
-            explicacao = questoes.iloc[i, 9]
+            explicacao = questoes.iloc[i, 8]
             
             print(explicacao)
             input('\n\nPressione "Enter" para acessar a próxima questão:\n')
@@ -137,7 +137,7 @@ Que pena, você errou! Deseja verificar a explicação para a questão?
     return resultados
 
 def exibir_resultado(questoes, resultados):
-    temas = questoes.iloc[:,10].reset_index(drop=True)
+    temas = questoes.iloc[:,9].reset_index(drop=True)
     resultado = pd.DataFrame({'acertos_binarios':resultados})
     resultado = pd.concat([temas, resultado], ignore_index=True, axis=1)
     resultado.columns = ['tema','acertou']
