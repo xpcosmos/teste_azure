@@ -88,7 +88,7 @@ def exibir_questoes(questoes):
         print(questoes.iloc[i, 1])
         print('\n\n\n')
         opcoes = []
-        for opcao in questoes.iloc[i, 2:5]:
+        for opcao in questoes.iloc[i, 2:7]:
             try:
                 if opcao[0] != "NaN":
                     opcoes.append(opcao)
