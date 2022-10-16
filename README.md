@@ -34,5 +34,5 @@ Ao fim do teste, você receberá um parâmetro geral do número de questões cor
 ## Ideias ainda mais distantes:
 
 * Mostrar um relatório de progresso de conhecimento
-* Expandiar catálogo de questões
+* Expandir catálogo de questões
 * Criar alternativas mais sofisticadas para enunciados
