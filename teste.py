@@ -69,7 +69,7 @@ def selecionar_questoes_user(questoes):
 
     for i, j in zip(questoes.tema.unique(), [15, 20,15,10]):
         questoes_user_list.append(questoes.loc[questoes.tema == i].sample(j))
-    return pd.concat(questoes_user_list)
+    return pd.concat(questoes_user_list).sample(frac = 1)
 
 def exibir_questoes(questoes):
     questoes.reset_index(drop=True, inplace=True)
